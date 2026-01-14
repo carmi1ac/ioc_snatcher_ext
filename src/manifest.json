@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "ioc_snatch.ai",
+  "description": "A Chrome extension that identifies cybersecurity indicators of compromise (IP addresses, file hashes, email addresses, URLs, file names) within web pages",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "background": { "service_worker": "background.bundle.js" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon-32.jpg"
+  },
+  "icons": {
+    "32": "icon-32.jpg",
+    "128": "icon-128.jpg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["contentScript.bundle.js"],
+      "css": ["content.styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["content.styles.css", "icon-128.jpg", "icon-32.jpg"],
+      "matches": []
+    }
+  ]
+}
